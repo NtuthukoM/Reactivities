@@ -1,5 +1,8 @@
 using Reactivities.Persistance;
 using Microsoft.EntityFrameworkCore;
+using MediatR;
+using Reactivities.Application.Activities;
+using Reactivities.Application.Core;
 
 const string corsPolicy = "CorsPolicy";
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +18,9 @@ builder.Services.AddCors(opt => {
         policy.WithOrigins("http://localhost:3000");
     });
 });
+
+builder.Services.AddMediatR(typeof(List.Handler).Assembly);
+builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
