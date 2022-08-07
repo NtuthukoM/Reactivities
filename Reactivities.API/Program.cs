@@ -15,7 +15,10 @@ builder.Services.AddDbContext<ReactivitiesDataContext>(options =>
 builder.Services.AddCors(opt => {
     opt.AddPolicy(name: corsPolicy, policy =>
     {
-        policy.WithOrigins("http://localhost:3000");
+        policy
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .WithOrigins("http://localhost:3000");
     });
 });
 
