@@ -11,21 +11,23 @@ namespace Reactivities.API.Controllers
     {
 
         [HttpGet]
-        public async Task<ActionResult<List<Activity>>> GetActivities()
+        public async Task<IActionResult> GetActivities()
         {
-            return await mediator.Send(new List.Query());
+            var result = await mediator.Send(new List.Query());
+            return HandleResult(result);
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<Activity>> GetActivity(int id)
+        public async Task<IActionResult> GetActivity(int id)
         {
-            return await mediator.Send(new Details.Query() { Id = id });
+            var result = await mediator.Send(new Details.Query() { Id = id });
+            return HandleResult(result);
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(Activity activity)
         {
             var result = await mediator.Send(new Create.Command() { Activity = activity });
-            return Ok(result);
+            return HandleResult(result);
         }
 
         [HttpPut("{id}")]
@@ -33,14 +35,14 @@ namespace Reactivities.API.Controllers
         {
             activity.Id = id;
             var result = await mediator.Send(new Edit.Command() { Activity = activity });
-            return Ok(result);
+            return HandleResult(result);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await mediator.Send(new Delete.Command() { Id = id });
-            return Ok(result);
+            return HandleResult(result);
         }
     }
 }

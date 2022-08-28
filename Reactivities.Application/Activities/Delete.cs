@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Reactivities.Application.Core;
 using Reactivities.Persistance;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,12 @@ namespace Reactivities.Application.Activities
 {
     public class Delete
     {
-        public class Command: IRequest
+        public class Command: IRequest<Result<Unit>>
         {
             public int Id { get; set; }
         }
 
-        public class Handler : IRequestHandler<Command>
+        public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly ReactivitiesDataContext context;
 
@@ -23,15 +24,17 @@ namespace Reactivities.Application.Activities
             {
                 this.context = context;
             }
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
                 var model = await context.Activities.FindAsync(request.Id);
                 if(model != null)
                 {
                     context.Activities.Remove(model);
-                    await context.SaveChangesAsync();
+                    var result = await context.SaveChangesAsync() > 0;
+                    if (!result) return Result<Unit>.Failure("Failed to delete activity");
+                    return Result<Unit>.Success(Unit.Value);
                 }
-                return Unit.Value;
+                return null;
             }
         }
     }

@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
+using Reactivities.Application.Core;
 using Reactivities.Domain;
 using Reactivities.Persistance;
 using System;
@@ -11,12 +13,20 @@ namespace Reactivities.Application.Activities
 {
     public class Create
     {
-        public class Command : IRequest
+        public class Command : IRequest<Result<Unit>>
         {
             public Activity Activity { get; set; }
         }
 
-        public class Handler : IRequestHandler<Command>
+        public class CommondValidator:AbstractValidator<Command>
+        {
+            public CommondValidator()
+            {
+                RuleFor(x => x.Activity).SetValidator(new ActivityValidator());
+            }
+        }
+
+        public class Handler : IRequestHandler<Command, Result<Unit>>
         {
             private readonly ReactivitiesDataContext context;
 
@@ -25,11 +35,13 @@ namespace Reactivities.Application.Activities
                 this.context = context;
             }
 
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
                 await context.Activities.AddAsync(request.Activity);
-                await context.SaveChangesAsync();
-                return Unit.Value; //returns nothing but lets the API controller know that execution is finished.
+               var result = await context.SaveChangesAsync() > 0;
+                if (!result)
+                    return Result<Unit>.Failure("Faile to create activity.");
+                return Result<Unit>.Success(Unit.Value); //returns nothing but lets the API controller know that execution is finished.
             }
         }
     }
