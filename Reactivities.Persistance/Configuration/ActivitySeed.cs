@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Reactivities.Persistance
+namespace Reactivities.Persistance.Configuration
 {
     public class ActivitySeed : IEntityTypeConfiguration<Activity>
     {
@@ -67,7 +67,7 @@ namespace Reactivities.Persistance
                     },
                     new Activity
                     {
-                        Id = 6,        
+                        Id = 6,
                         Title = "Future Activity 4",
                         Date = DateTime.Now.AddMonths(4),
                         Description = "Activity 4 months in future",

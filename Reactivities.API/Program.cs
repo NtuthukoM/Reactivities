@@ -6,9 +6,19 @@ using Reactivities.Application.Core;
 using FluentValidation.AspNetCore;
 using FluentValidation;
 using Reactivities.API.Middleware;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
+using Reactivities.Domain;
+using Reactivities.API.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 const string corsPolicy = "CorsPolicy";
 var builder = WebApplication.CreateBuilder(args);
+var config = builder.Configuration;
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -25,12 +35,36 @@ builder.Services.AddCors(opt => {
     });
 });
 
+builder.Services.AddDefaultIdentity<AppUser>(options => {
+    options.Password.RequireNonAlphanumeric = false;
+})
+    //.AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<ReactivitiesDataContext>();
+
+var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(opt => {
+        opt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+        {
+            ValidateIssuerSigningKey = true,
+            ValidateIssuer = false,
+            IssuerSigningKey = key,
+            ValidateAudience = false
+        };
+    });
+
+builder.Services.AddScoped<TokenService>();
 builder.Services.AddMediatR(typeof(List.Handler).Assembly);
 builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddControllers();
+//All controllers require authentication by default
+builder.Services.AddControllers(opt => {
+    var policy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser().Build();
+    opt.Filters.Add(new AuthorizeFilter(policy));
+});
 //    .AddFluentValidation(config => {
 //        config.RegisterValidatorsFromAssemblyContaining<Create>();
 //    });
@@ -56,6 +90,7 @@ if (app.Environment.IsDevelopment())
 app.UseRouting();
 app.UseCors(corsPolicy);
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

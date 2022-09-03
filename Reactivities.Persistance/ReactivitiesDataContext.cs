@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Reactivities.Domain;
+using Reactivities.Persistance.Configuration;
 
 namespace Reactivities.Persistance
 {
-    public class ReactivitiesDataContext:DbContext
+    public class ReactivitiesDataContext:IdentityDbContext<AppUser>
     {
         public ReactivitiesDataContext(DbContextOptions options) : base(options)
         {
@@ -12,6 +14,7 @@ namespace Reactivities.Persistance
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new ActivitySeed());
+            modelBuilder.ApplyConfiguration(new AppUserSeed());
         }
         public DbSet<Activity> Activities { get; set; }
     }

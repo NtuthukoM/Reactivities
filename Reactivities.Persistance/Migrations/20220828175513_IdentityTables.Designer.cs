@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Reactivities.Persistance;
 
@@ -11,9 +12,10 @@ using Reactivities.Persistance;
 namespace Reactivities.Persistance.Migrations
 {
     [DbContext(typeof(ReactivitiesDataContext))]
-    partial class ReactivitiesDataContextModelSnapshot : ModelSnapshot
+    [Migration("20220828175513_IdentityTables")]
+    partial class IdentityTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,12 +104,10 @@ namespace Reactivities.Persistance.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -144,12 +144,10 @@ namespace Reactivities.Persistance.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -200,7 +198,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 1,
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2022, 7, 3, 14, 59, 57, 370, DateTimeKind.Local).AddTicks(5611),
+                            Date = new DateTime(2022, 6, 28, 19, 55, 12, 814, DateTimeKind.Local).AddTicks(576),
                             Description = "Activity 2 months ago",
                             Title = "Past Activity 1",
                             Venue = "Pub"
@@ -210,7 +208,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 2,
                             Category = "culture",
                             City = "Paris",
-                            Date = new DateTime(2022, 8, 3, 14, 59, 57, 370, DateTimeKind.Local).AddTicks(5625),
+                            Date = new DateTime(2022, 7, 28, 19, 55, 12, 814, DateTimeKind.Local).AddTicks(594),
                             Description = "Activity 1 month ago",
                             Title = "Past Activity 2",
                             Venue = "The Louvre"
@@ -220,7 +218,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 3,
                             Category = "music",
                             City = "London",
-                            Date = new DateTime(2022, 10, 3, 14, 59, 57, 370, DateTimeKind.Local).AddTicks(5627),
+                            Date = new DateTime(2022, 9, 28, 19, 55, 12, 814, DateTimeKind.Local).AddTicks(597),
                             Description = "Activity 1 month in future",
                             Title = "Future Activity 1",
                             Venue = "Wembly Stadium"
@@ -230,7 +228,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 4,
                             Category = "food",
                             City = "London",
-                            Date = new DateTime(2022, 11, 3, 14, 59, 57, 370, DateTimeKind.Local).AddTicks(5629),
+                            Date = new DateTime(2022, 10, 28, 19, 55, 12, 814, DateTimeKind.Local).AddTicks(598),
                             Description = "Activity 2 months in future",
                             Title = "Future Activity 2",
                             Venue = "Jamies Italian"
@@ -240,7 +238,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 5,
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2022, 12, 3, 14, 59, 57, 370, DateTimeKind.Local).AddTicks(5630),
+                            Date = new DateTime(2022, 11, 28, 19, 55, 12, 814, DateTimeKind.Local).AddTicks(600),
                             Description = "Activity 3 months in future",
                             Title = "Future Activity 3",
                             Venue = "Pub"
@@ -250,7 +248,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 6,
                             Category = "culture",
                             City = "London",
-                            Date = new DateTime(2023, 1, 3, 14, 59, 57, 370, DateTimeKind.Local).AddTicks(5631),
+                            Date = new DateTime(2022, 12, 28, 19, 55, 12, 814, DateTimeKind.Local).AddTicks(601),
                             Description = "Activity 4 months in future",
                             Title = "Future Activity 4",
                             Venue = "British Museum"
@@ -260,7 +258,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 7,
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2023, 2, 3, 14, 59, 57, 370, DateTimeKind.Local).AddTicks(5633),
+                            Date = new DateTime(2023, 1, 28, 19, 55, 12, 814, DateTimeKind.Local).AddTicks(602),
                             Description = "Activity 5 months in future",
                             Title = "Future Activity 5",
                             Venue = "Punch and Judy"
@@ -270,7 +268,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 8,
                             Category = "music",
                             City = "London",
-                            Date = new DateTime(2023, 3, 3, 14, 59, 57, 370, DateTimeKind.Local).AddTicks(5634),
+                            Date = new DateTime(2023, 2, 28, 19, 55, 12, 814, DateTimeKind.Local).AddTicks(604),
                             Description = "Activity 6 months in future",
                             Title = "Future Activity 6",
                             Venue = "O2 Arena"
@@ -280,7 +278,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 9,
                             Category = "travel",
                             City = "Berlin",
-                            Date = new DateTime(2023, 4, 3, 14, 59, 57, 370, DateTimeKind.Local).AddTicks(5635),
+                            Date = new DateTime(2023, 3, 28, 19, 55, 12, 814, DateTimeKind.Local).AddTicks(605),
                             Description = "Activity 7 months in future",
                             Title = "Future Activity 7",
                             Venue = "All"
@@ -290,7 +288,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 10,
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2023, 5, 3, 14, 59, 57, 370, DateTimeKind.Local).AddTicks(5637),
+                            Date = new DateTime(2023, 4, 28, 19, 55, 12, 814, DateTimeKind.Local).AddTicks(606),
                             Description = "Activity 8 months in future",
                             Title = "Future Activity 8",
                             Venue = "Pub"
@@ -306,6 +304,7 @@ namespace Reactivities.Persistance.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Bio")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -367,59 +366,6 @@ namespace Reactivities.Persistance.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "7D891E0A-E166-45E7-9F15-AE1F683EA43A",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "9564e64a-db18-4b72-9ed6-4efb77b21c3e",
-                            DisplayName = "Bob",
-                            Email = "bob@example.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "BOB@EXAMPLE.COM",
-                            NormalizedUserName = "BOB@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECKmi3D8SGvyFN7T0kY1Rh1ZY6GxEssML6OZSiX6tYBTXDEgADlVHeMCaNe77Goy6Q==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "ca19934e-13eb-4629-b723-ce0a41df54cb",
-                            TwoFactorEnabled = false,
-                            UserName = "bob@example.com"
-                        },
-                        new
-                        {
-                            Id = "72CC07A3-65A5-47DD-82A3-06F313FC12A7",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "c1ce2db2-05e3-4204-9224-41a107624f24",
-                            DisplayName = "Jane",
-                            Email = "jane@example.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "JANE@EXAMPLE.COM",
-                            NormalizedUserName = "JANE@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMrn+vDVi91gNi/6qOm7zGooZk7zDu08QFxGD41eeVgvLd8kuxVvMCaxeBiIJPdr1Q==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "85f6b3bb-9950-4341-a60d-bd06f2e426ce",
-                            TwoFactorEnabled = false,
-                            UserName = "jane@example.com"
-                        },
-                        new
-                        {
-                            Id = "B61171D5-4848-4F3F-B425-EDECCB408C9B",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "228ad242-38ed-4b42-a579-76de07cd7b3c",
-                            DisplayName = "Tom",
-                            Email = "tom@example.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "TOM@EXAMPLE.COM",
-                            NormalizedUserName = "TOM@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMfMpWSPDOfLlGdZKJbJe9ViMtK0pJbEJgsaUaDNCOeQPv7L0uhdKWHwf03v7yx2EA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "f408e76a-6c88-4097-b10f-8c9c4364c806",
-                            TwoFactorEnabled = false,
-                            UserName = "tom@example.com"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
