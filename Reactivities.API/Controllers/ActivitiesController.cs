@@ -7,8 +7,7 @@ using Reactivities.Domain;
 using Reactivities.Persistance;
 
 namespace Reactivities.API.Controllers
-{
-    [AllowAnonymous]
+{    
     public class ActivitiesController:BaseApiController
     {
 
@@ -32,6 +31,7 @@ namespace Reactivities.API.Controllers
             return HandleResult(result);
         }
 
+        [Authorize(Policy = "IsHostRequirement")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, Activity activity)
         {
@@ -40,10 +40,18 @@ namespace Reactivities.API.Controllers
             return HandleResult(result);
         }
 
+        [Authorize(Policy = "IsHostRequirement")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await mediator.Send(new Delete.Command() { Id = id });
+            return HandleResult(result);
+        }
+
+        [HttpPost("{id}/attend")]
+        public async Task<IActionResult> Attend(int id)
+        {
+            var result = await mediator.Send(new UpdateAttendance.Command() { Id = id });
             return HandleResult(result);
         }
     }

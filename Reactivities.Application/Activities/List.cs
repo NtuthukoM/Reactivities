@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Reactivities.Application.Core;
 using Reactivities.Domain;
@@ -13,23 +15,27 @@ namespace Reactivities.Application.Activities
 {
     public class List
     {
-        public class Query:IRequest<Result<List<Activity>>>
+        public class Query:IRequest<Result<List<ActivityDto>>>
         {
 
         }
 
-        public class Handler : IRequestHandler<Query, Result<List<Activity>>>
+        public class Handler : IRequestHandler<Query, Result<List<ActivityDto>>>
         {
             private readonly ReactivitiesDataContext context;
+            private readonly IMapper mapper;
 
-            public Handler(ReactivitiesDataContext context)
+            public Handler(ReactivitiesDataContext context, IMapper mapper)
             {
                 this.context = context;
+                this.mapper = mapper;
             }
-            public async Task<Result<List<Activity>>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Result<List<ActivityDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var result = await context.Activities.ToListAsync();
-                return Result<List<Activity>>.Success(result);
+                var result = await context.Activities
+                    .ProjectTo<ActivityDto>(mapper.ConfigurationProvider)
+                    .ToListAsync();
+                return Result<List<ActivityDto>>.Success(result);
             }
         }
     }

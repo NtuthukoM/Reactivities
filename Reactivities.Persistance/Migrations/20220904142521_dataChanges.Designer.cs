@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Reactivities.Persistance;
 
@@ -11,9 +12,10 @@ using Reactivities.Persistance;
 namespace Reactivities.Persistance.Migrations
 {
     [DbContext(typeof(ReactivitiesDataContext))]
-    partial class ReactivitiesDataContextModelSnapshot : ModelSnapshot
+    [Migration("20220904142521_dataChanges")]
+    partial class dataChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -203,7 +205,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 1,
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2022, 7, 4, 16, 26, 21, 8, DateTimeKind.Local).AddTicks(7043),
+                            Date = new DateTime(2022, 7, 4, 16, 25, 21, 365, DateTimeKind.Local).AddTicks(4857),
                             Description = "Activity 2 months ago",
                             IsCancelled = false,
                             Title = "Past Activity 1",
@@ -214,7 +216,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 2,
                             Category = "culture",
                             City = "Paris",
-                            Date = new DateTime(2022, 8, 4, 16, 26, 21, 8, DateTimeKind.Local).AddTicks(7061),
+                            Date = new DateTime(2022, 8, 4, 16, 25, 21, 365, DateTimeKind.Local).AddTicks(4873),
                             Description = "Activity 1 month ago",
                             IsCancelled = false,
                             Title = "Past Activity 2",
@@ -225,7 +227,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 3,
                             Category = "music",
                             City = "London",
-                            Date = new DateTime(2022, 10, 4, 16, 26, 21, 8, DateTimeKind.Local).AddTicks(7065),
+                            Date = new DateTime(2022, 10, 4, 16, 25, 21, 365, DateTimeKind.Local).AddTicks(4876),
                             Description = "Activity 1 month in future",
                             IsCancelled = false,
                             Title = "Future Activity 1",
@@ -236,7 +238,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 4,
                             Category = "food",
                             City = "London",
-                            Date = new DateTime(2022, 11, 4, 16, 26, 21, 8, DateTimeKind.Local).AddTicks(7067),
+                            Date = new DateTime(2022, 11, 4, 16, 25, 21, 365, DateTimeKind.Local).AddTicks(4879),
                             Description = "Activity 2 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 2",
@@ -247,7 +249,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 5,
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2022, 12, 4, 16, 26, 21, 8, DateTimeKind.Local).AddTicks(7069),
+                            Date = new DateTime(2022, 12, 4, 16, 25, 21, 365, DateTimeKind.Local).AddTicks(4880),
                             Description = "Activity 3 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 3",
@@ -258,7 +260,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 6,
                             Category = "culture",
                             City = "London",
-                            Date = new DateTime(2023, 1, 4, 16, 26, 21, 8, DateTimeKind.Local).AddTicks(7072),
+                            Date = new DateTime(2023, 1, 4, 16, 25, 21, 365, DateTimeKind.Local).AddTicks(4881),
                             Description = "Activity 4 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 4",
@@ -269,7 +271,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 7,
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2023, 2, 4, 16, 26, 21, 8, DateTimeKind.Local).AddTicks(7074),
+                            Date = new DateTime(2023, 2, 4, 16, 25, 21, 365, DateTimeKind.Local).AddTicks(4883),
                             Description = "Activity 5 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 5",
@@ -280,7 +282,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 8,
                             Category = "music",
                             City = "London",
-                            Date = new DateTime(2023, 3, 4, 16, 26, 21, 8, DateTimeKind.Local).AddTicks(7168),
+                            Date = new DateTime(2023, 3, 4, 16, 25, 21, 365, DateTimeKind.Local).AddTicks(4884),
                             Description = "Activity 6 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 6",
@@ -291,7 +293,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 9,
                             Category = "travel",
                             City = "Berlin",
-                            Date = new DateTime(2023, 4, 4, 16, 26, 21, 8, DateTimeKind.Local).AddTicks(7172),
+                            Date = new DateTime(2023, 4, 4, 16, 25, 21, 365, DateTimeKind.Local).AddTicks(4886),
                             Description = "Activity 7 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 7",
@@ -302,7 +304,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 10,
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2023, 5, 4, 16, 26, 21, 8, DateTimeKind.Local).AddTicks(7174),
+                            Date = new DateTime(2023, 5, 4, 16, 25, 21, 365, DateTimeKind.Local).AddTicks(4998),
                             Description = "Activity 8 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 8",
@@ -326,116 +328,6 @@ namespace Reactivities.Persistance.Migrations
                     b.HasIndex("AppUserId");
 
                     b.ToTable("ActivityAttendees");
-
-                    b.HasData(
-                        new
-                        {
-                            ActivityId = 1,
-                            AppUserId = "7D891E0A-E166-45E7-9F15-AE1F683EA43A",
-                            IsHost = true
-                        },
-                        new
-                        {
-                            ActivityId = 2,
-                            AppUserId = "7D891E0A-E166-45E7-9F15-AE1F683EA43A",
-                            IsHost = true
-                        },
-                        new
-                        {
-                            ActivityId = 2,
-                            AppUserId = "72CC07A3-65A5-47DD-82A3-06F313FC12A7",
-                            IsHost = false
-                        },
-                        new
-                        {
-                            ActivityId = 3,
-                            AppUserId = "B61171D5-4848-4F3F-B425-EDECCB408C9B",
-                            IsHost = true
-                        },
-                        new
-                        {
-                            ActivityId = 3,
-                            AppUserId = "72CC07A3-65A5-47DD-82A3-06F313FC12A7",
-                            IsHost = false
-                        },
-                        new
-                        {
-                            ActivityId = 4,
-                            AppUserId = "7D891E0A-E166-45E7-9F15-AE1F683EA43A",
-                            IsHost = true
-                        },
-                        new
-                        {
-                            ActivityId = 4,
-                            AppUserId = "B61171D5-4848-4F3F-B425-EDECCB408C9B",
-                            IsHost = false
-                        },
-                        new
-                        {
-                            ActivityId = 5,
-                            AppUserId = "72CC07A3-65A5-47DD-82A3-06F313FC12A7",
-                            IsHost = true
-                        },
-                        new
-                        {
-                            ActivityId = 5,
-                            AppUserId = "7D891E0A-E166-45E7-9F15-AE1F683EA43A",
-                            IsHost = false
-                        },
-                        new
-                        {
-                            ActivityId = 6,
-                            AppUserId = "72CC07A3-65A5-47DD-82A3-06F313FC12A7",
-                            IsHost = true
-                        },
-                        new
-                        {
-                            ActivityId = 7,
-                            AppUserId = "7D891E0A-E166-45E7-9F15-AE1F683EA43A",
-                            IsHost = true
-                        },
-                        new
-                        {
-                            ActivityId = 7,
-                            AppUserId = "72CC07A3-65A5-47DD-82A3-06F313FC12A7",
-                            IsHost = false
-                        },
-                        new
-                        {
-                            ActivityId = 8,
-                            AppUserId = "B61171D5-4848-4F3F-B425-EDECCB408C9B",
-                            IsHost = true
-                        },
-                        new
-                        {
-                            ActivityId = 8,
-                            AppUserId = "72CC07A3-65A5-47DD-82A3-06F313FC12A7",
-                            IsHost = false
-                        },
-                        new
-                        {
-                            ActivityId = 9,
-                            AppUserId = "7D891E0A-E166-45E7-9F15-AE1F683EA43A",
-                            IsHost = true
-                        },
-                        new
-                        {
-                            ActivityId = 9,
-                            AppUserId = "B61171D5-4848-4F3F-B425-EDECCB408C9B",
-                            IsHost = false
-                        },
-                        new
-                        {
-                            ActivityId = 10,
-                            AppUserId = "B61171D5-4848-4F3F-B425-EDECCB408C9B",
-                            IsHost = true
-                        },
-                        new
-                        {
-                            ActivityId = 10,
-                            AppUserId = "72CC07A3-65A5-47DD-82A3-06F313FC12A7",
-                            IsHost = false
-                        });
                 });
 
             modelBuilder.Entity("Reactivities.Domain.AppUser", b =>
@@ -514,16 +406,16 @@ namespace Reactivities.Persistance.Migrations
                         {
                             Id = "7D891E0A-E166-45E7-9F15-AE1F683EA43A",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "76294e93-3517-4666-92a3-caeff0c26bf1",
+                            ConcurrencyStamp = "bbd9b959-135b-47db-bc38-92ac603cb750",
                             DisplayName = "Bob",
                             Email = "bob@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "BOB@EXAMPLE.COM",
                             NormalizedUserName = "BOB@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECPm4ggSBpQZkVsha98HIa3rD6zEGcygA7xFwpq9X16hECU+ZrtBodtDpO9Crf9ItA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJAy1U5G3jBjH/b8P2fZoqbFmDYQR96+iD09ZNmZO+YEoT3UlHlD8DZ0+szsPyr37Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3fbb37f5-9182-45d0-aaba-c5d9e6a80bfc",
+                            SecurityStamp = "bb7289ca-cadb-42b1-989c-ee06734475e5",
                             TwoFactorEnabled = false,
                             UserName = "bob@example.com"
                         },
@@ -531,16 +423,16 @@ namespace Reactivities.Persistance.Migrations
                         {
                             Id = "72CC07A3-65A5-47DD-82A3-06F313FC12A7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0358f5c2-6013-4e54-93f7-cde105467812",
+                            ConcurrencyStamp = "90048c72-aae9-4220-ab90-e9cab699ead7",
                             DisplayName = "Jane",
                             Email = "jane@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "JANE@EXAMPLE.COM",
                             NormalizedUserName = "JANE@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOlXpOe6TbUsC+Vnb9sxJS7RKtEACa5IdCqFG0wc8fOUdGZxghPNebkhYFH4UcfNiA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKAz4DbD0ejwRvNiBlnm2x5PujuXLxL35pdiQxXSffir+0GBnL8oN7TALCYL/19BKg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c32f0cdb-6582-477a-bc1b-e13036ea3039",
+                            SecurityStamp = "e017cb31-7d86-485c-8952-872c537fb9f6",
                             TwoFactorEnabled = false,
                             UserName = "jane@example.com"
                         },
@@ -548,16 +440,16 @@ namespace Reactivities.Persistance.Migrations
                         {
                             Id = "B61171D5-4848-4F3F-B425-EDECCB408C9B",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dd6e0a94-14c2-4ebb-b0a2-6b498f09b9bc",
+                            ConcurrencyStamp = "1a58cba1-51f3-40ff-ad37-02788b8e0090",
                             DisplayName = "Tom",
                             Email = "tom@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TOM@EXAMPLE.COM",
                             NormalizedUserName = "TOM@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEP/KGoHpObfhyg9Jpxi2FQy5R0EOaFBcMfMeYXoHAInSDfljzd5bqUU3DHOdVC6Lzg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELhLq4XH/xm1bsUMCH0O6q3RSuIJyb7whjA+47ebnXNpiCBBdztXddyW6jb+YFgWjg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d6177be8-9785-43d4-8ecc-ff23e348f7f2",
+                            SecurityStamp = "4c8c7bf6-2bdf-427e-86de-9c42cf1c1902",
                             TwoFactorEnabled = false,
                             UserName = "tom@example.com"
                         });
