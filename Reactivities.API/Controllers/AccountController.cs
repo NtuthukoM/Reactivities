@@ -46,11 +46,13 @@ namespace Reactivities.API.Controllers
         {
             if(await userManager.Users.AnyAsync(x => x.Email == register.Email))
             {
-                return BadRequest("Email taken");
+                ModelState.AddModelError("Email","Email taken");
+                return ValidationProblem();
             }
             if(await userManager.Users.AnyAsync(x => x.UserName == register.Username))
             {
-                return BadRequest("Username taken");
+                ModelState.AddModelError("Username", "Username taken");
+                return ValidationProblem();
             }
 
             var user = new AppUser
