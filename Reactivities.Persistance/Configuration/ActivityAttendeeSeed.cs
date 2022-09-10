@@ -17,12 +17,6 @@ namespace Reactivities.Persistance.Configuration
                     new ActivityAttendee
                     {
                         AppUserId = "7D891E0A-E166-45E7-9F15-AE1F683EA43A",
-                        ActivityId = 1,
-                        IsHost = true
-                    },
-                    new ActivityAttendee
-                    {
-                        AppUserId = "7D891E0A-E166-45E7-9F15-AE1F683EA43A",
                         ActivityId = 2,
                         IsHost = true
                     },

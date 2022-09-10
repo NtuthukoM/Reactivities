@@ -40,7 +40,7 @@ namespace Infrastructure.Security
             {
                 return Task.CompletedTask;
             }
-            var activityId = int.Parse(requestValue.ToString());
+            var activityId = int.Parse(requestValue.Value.Value.ToString());
 
             var attendee = dbContext.ActivityAttendees
                 .AsNoTracking() //don't keep in memory when saving later on

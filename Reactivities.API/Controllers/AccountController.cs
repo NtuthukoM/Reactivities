@@ -60,7 +60,7 @@ namespace Reactivities.API.Controllers
                 Email = register.Email,
                 UserName = register.Username,
                 DisplayName = register.DisplayName,
-            };
+            };            
             var result = await userManager.CreateAsync(user, register.Password);
             if (result.Succeeded)
             {
