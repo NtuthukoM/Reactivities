@@ -30,7 +30,8 @@ namespace Reactivities.API.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
-            var user = await userManager.FindByEmailAsync(loginDto.Email);
+            var user = await userManager.Users.Include(x => x.Photos)
+                .FirstOrDefaultAsync(x => x.Email == loginDto.Email);
             if (user == null)
                 return Unauthorized();
             var result = await signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
@@ -74,7 +75,8 @@ namespace Reactivities.API.Controllers
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
             string email = User.FindFirstValue(ClaimTypes.Email);
-            var user = await userManager.FindByEmailAsync(email);
+            var user = await userManager.Users.Include(x => x.Photos)
+                .FirstOrDefaultAsync(x => x.Email == email);
             return CreateUser(user);
         }
 
@@ -84,7 +86,7 @@ namespace Reactivities.API.Controllers
             {
                 Username = user.UserName,
                 DisplayName = user.DisplayName,
-                Image = "",
+                Image = user.Photos?.FirstOrDefault(x => x.IsMain)?.Url,
                 Token = tokenService.CreateToken(user)
             };
         }

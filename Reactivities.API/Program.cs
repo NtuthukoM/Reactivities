@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Reactivities.Application.Interfaces;
 using Infrastructure.Security;
+using Infrastructure.Photos;
 
 const string corsPolicy = "CorsPolicy";
 var builder = WebApplication.CreateBuilder(args);
@@ -66,8 +67,10 @@ builder.Services.AddAuthorization(opt =>
 builder.Services.AddTransient<IAuthorizationHandler, IsHostRequirementHandler>();
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<IUserAccessor, UserAccessor>();
+builder.Services.AddScoped<IPhotoAccessor, PhotoAccessor>();
 builder.Services.AddMediatR(typeof(List.Handler).Assembly);
 builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+builder.Services.Configure<CloudinarySettings>(config.GetSection("Cloudinary"));
 
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

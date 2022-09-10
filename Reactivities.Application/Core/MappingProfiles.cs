@@ -17,11 +17,16 @@ namespace Reactivities.Application.Core
             CreateMap<Activity, ActivityDto>()
                 .ForMember(d => d.HostUsername, opt =>
                     opt.MapFrom(q => q.Attendees.FirstOrDefault(x => x.IsHost).AppUser.UserName));
-            CreateMap<ActivityAttendee, Profiles.Profile>()
+            CreateMap<ActivityAttendee, AttendeeDto>()
                 .ForMember(d => d.DisplayName, opt => opt.MapFrom(x => x.AppUser.DisplayName))
                 .ForMember(d => d.Username, opt => opt.MapFrom(x => x.AppUser.UserName))
-                .ForMember(d => d.Bio, opt => opt.MapFrom(x => x.AppUser.Bio));
-                
+                .ForMember(d => d.Bio, opt => opt.MapFrom(x => x.AppUser.Bio))
+                .ForMember(x => x.Image, o => o.MapFrom(u => 
+                                u.AppUser.Photos.FirstOrDefault(x => x.IsMain).Url));
+
+            CreateMap<AppUser, Profiles.Profile>()
+                .ForMember(x => x.Image, o => o.MapFrom(u => u.Photos.FirstOrDefault(x => x.IsMain).Url));
+
         }
     }
 }

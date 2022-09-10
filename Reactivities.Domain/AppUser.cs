@@ -13,5 +13,6 @@ namespace Reactivities.Domain
         public string? Bio { get; set; }
 
         public ICollection<ActivityAttendee> Activities { get; set; } = new List<ActivityAttendee>();
+        public ICollection<Photo> Photos { get; set; } = new List<Photo>();
     }
 }
