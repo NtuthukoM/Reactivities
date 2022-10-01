@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Reactivities.Application.Activities;
+using Reactivities.Application.Comments;
 using Reactivities.Domain;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,11 @@ namespace Reactivities.Application.Core
 
             CreateMap<AppUser, Profiles.Profile>()
                 .ForMember(x => x.Image, o => o.MapFrom(u => u.Photos.FirstOrDefault(x => x.IsMain).Url));
+
+            CreateMap<Comment, CommentDto>()
+                .ForMember(c => c.Username, o => o.MapFrom(u => u.Author.UserName))
+                .ForMember(c => c.DisplayName, o => o.MapFrom(u => u.Author.DisplayName))
+                .ForMember(c => c.Image, o => o.MapFrom(u => u.Author.Photos.FirstOrDefault(x => x.IsMain).Url));
 
         }
     }

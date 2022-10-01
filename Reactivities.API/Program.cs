@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Reactivities.Application.Interfaces;
 using Infrastructure.Security;
 using Infrastructure.Photos;
+using Reactivities.API.SignalR;
 
 const string corsPolicy = "CorsPolicy";
 var builder = WebApplication.CreateBuilder(args);
@@ -34,6 +35,7 @@ builder.Services.AddCors(opt => {
         policy
         .AllowAnyHeader()
         .AllowAnyMethod()
+        .AllowCredentials()
         .WithOrigins("http://localhost:3000");
     });
 });
@@ -54,6 +56,19 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = key,
             ValidateAudience = false
         };
+        opt.Events = new JwtBearerEvents
+        {
+            OnMessageReceived = context =>
+            {
+                var accessToken = context.Request.Query["access_token"];
+                var path = context.HttpContext.Request.Path;
+                if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/chat"))
+                {
+                    context.Token = accessToken;
+                }
+                return Task.CompletedTask;
+            }
+        };
     });
 
 builder.Services.AddAuthorization(opt =>
@@ -71,7 +86,7 @@ builder.Services.AddScoped<IPhotoAccessor, PhotoAccessor>();
 builder.Services.AddMediatR(typeof(List.Handler).Assembly);
 builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 builder.Services.Configure<CloudinarySettings>(config.GetSection("Cloudinary"));
-
+builder.Services.AddSignalR();
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 //All controllers require authentication by default
@@ -109,5 +124,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<ChatHub>("/chat");
 
 app.Run();

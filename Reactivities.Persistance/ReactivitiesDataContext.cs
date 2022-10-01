@@ -26,6 +26,12 @@ namespace Reactivities.Persistance
                 .WithMany(x => x.Attendees)
                 .HasForeignKey(x => x.ActivityId);
 
+            //If an activity is deleted, the delete will cascade to the related comments:
+            modelBuilder.Entity<Comment>()
+                .HasOne(a => a.Activity)
+                .WithMany(c => c.Comments)
+                .OnDelete(DeleteBehavior.Cascade);
+
 
             modelBuilder.ApplyConfiguration(new AppUserSeed());
             modelBuilder.ApplyConfiguration(new ActivitySeed());
@@ -34,5 +40,6 @@ namespace Reactivities.Persistance
         public DbSet<Activity> Activities { get; set; }
         public DbSet<ActivityAttendee> ActivityAttendees { get; set; }
         public DbSet<Photo> Photos { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }
