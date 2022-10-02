@@ -7,6 +7,12 @@ namespace Reactivities.Persistance
 {
     public class ReactivitiesDataContext:IdentityDbContext<AppUser>
     {
+        public DbSet<Activity> Activities { get; set; }
+        public DbSet<ActivityAttendee> ActivityAttendees { get; set; }
+        public DbSet<Photo> Photos { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<UserFollowing> UserFollowings { get; set; }
+
         public ReactivitiesDataContext(DbContextOptions options) : base(options)
         {
         }
@@ -32,14 +38,25 @@ namespace Reactivities.Persistance
                 .WithMany(c => c.Comments)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<UserFollowing>(b => {
+                b.HasKey(x => new { x.ObserverId, x.TargetId });
+
+                b.HasOne(o => o.Observer)
+                .WithMany(o => o.Followers)
+                .HasForeignKey(f => f.ObserverId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+                b.HasOne(o => o.Target)
+                .WithMany(o => o.Followings)
+                .HasForeignKey(f => f.TargetId)
+                .OnDelete(DeleteBehavior.NoAction);
+            });
+
 
             modelBuilder.ApplyConfiguration(new AppUserSeed());
             modelBuilder.ApplyConfiguration(new ActivitySeed());
             modelBuilder.ApplyConfiguration(new ActivityAttendeeSeed());
         }
-        public DbSet<Activity> Activities { get; set; }
-        public DbSet<ActivityAttendee> ActivityAttendees { get; set; }
-        public DbSet<Photo> Photos { get; set; }
-        public DbSet<Comment> Comments { get; set; }
+
     }
 }

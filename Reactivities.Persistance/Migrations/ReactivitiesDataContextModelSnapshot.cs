@@ -203,7 +203,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 1,
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2022, 8, 1, 8, 10, 51, 863, DateTimeKind.Local).AddTicks(6753),
+                            Date = new DateTime(2022, 8, 1, 16, 28, 37, 400, DateTimeKind.Local).AddTicks(1013),
                             Description = "Activity 2 months ago",
                             IsCancelled = false,
                             Title = "Past Activity 1",
@@ -214,7 +214,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 2,
                             Category = "culture",
                             City = "Paris",
-                            Date = new DateTime(2022, 9, 1, 8, 10, 51, 863, DateTimeKind.Local).AddTicks(6772),
+                            Date = new DateTime(2022, 9, 1, 16, 28, 37, 400, DateTimeKind.Local).AddTicks(1028),
                             Description = "Activity 1 month ago",
                             IsCancelled = false,
                             Title = "Past Activity 2",
@@ -225,7 +225,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 3,
                             Category = "music",
                             City = "London",
-                            Date = new DateTime(2022, 11, 1, 8, 10, 51, 863, DateTimeKind.Local).AddTicks(6775),
+                            Date = new DateTime(2022, 11, 1, 16, 28, 37, 400, DateTimeKind.Local).AddTicks(1031),
                             Description = "Activity 1 month in future",
                             IsCancelled = false,
                             Title = "Future Activity 1",
@@ -236,7 +236,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 4,
                             Category = "food",
                             City = "London",
-                            Date = new DateTime(2022, 12, 1, 8, 10, 51, 863, DateTimeKind.Local).AddTicks(6778),
+                            Date = new DateTime(2022, 12, 1, 16, 28, 37, 400, DateTimeKind.Local).AddTicks(1033),
                             Description = "Activity 2 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 2",
@@ -247,7 +247,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 5,
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2023, 1, 1, 8, 10, 51, 863, DateTimeKind.Local).AddTicks(6780),
+                            Date = new DateTime(2023, 1, 1, 16, 28, 37, 400, DateTimeKind.Local).AddTicks(1035),
                             Description = "Activity 3 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 3",
@@ -258,7 +258,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 6,
                             Category = "culture",
                             City = "London",
-                            Date = new DateTime(2023, 2, 1, 8, 10, 51, 863, DateTimeKind.Local).AddTicks(6782),
+                            Date = new DateTime(2023, 2, 1, 16, 28, 37, 400, DateTimeKind.Local).AddTicks(1036),
                             Description = "Activity 4 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 4",
@@ -269,7 +269,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 7,
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2023, 3, 1, 8, 10, 51, 863, DateTimeKind.Local).AddTicks(6783),
+                            Date = new DateTime(2023, 3, 1, 16, 28, 37, 400, DateTimeKind.Local).AddTicks(1038),
                             Description = "Activity 5 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 5",
@@ -280,7 +280,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 8,
                             Category = "music",
                             City = "London",
-                            Date = new DateTime(2023, 4, 1, 8, 10, 51, 863, DateTimeKind.Local).AddTicks(6785),
+                            Date = new DateTime(2023, 4, 1, 16, 28, 37, 400, DateTimeKind.Local).AddTicks(1040),
                             Description = "Activity 6 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 6",
@@ -291,7 +291,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 9,
                             Category = "travel",
                             City = "Berlin",
-                            Date = new DateTime(2023, 5, 1, 8, 10, 51, 863, DateTimeKind.Local).AddTicks(6787),
+                            Date = new DateTime(2023, 5, 1, 16, 28, 37, 400, DateTimeKind.Local).AddTicks(1042),
                             Description = "Activity 7 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 7",
@@ -302,7 +302,7 @@ namespace Reactivities.Persistance.Migrations
                             Id = 10,
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2023, 6, 1, 8, 10, 51, 863, DateTimeKind.Local).AddTicks(6788),
+                            Date = new DateTime(2023, 6, 1, 16, 28, 37, 400, DateTimeKind.Local).AddTicks(1043),
                             Description = "Activity 8 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 8",
@@ -508,16 +508,16 @@ namespace Reactivities.Persistance.Migrations
                         {
                             Id = "7D891E0A-E166-45E7-9F15-AE1F683EA43A",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b4611901-99a3-4bd9-8bfd-36978b3b32ea",
+                            ConcurrencyStamp = "6e060bfb-b81e-4520-82a7-b12c688aa4e7",
                             DisplayName = "Bob",
                             Email = "bob@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "BOB@EXAMPLE.COM",
                             NormalizedUserName = "BOB@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELWW0jX4QCeSYhEHEjv/AVK5jgLaJxk7/rMj91HJjGAmi/DJY0OriwLk9jeLFi/PsQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGVHbH9gxxA/vknwPDR+2qPtQEpkwG/cQ5bbp+sLXwoUjQLOXS9sLgE7uMUGRKYs3w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d162f7c8-9892-4f18-b2cf-e7f7208edde9",
+                            SecurityStamp = "dc5a5912-fa98-4506-9645-d42b296ac0bf",
                             TwoFactorEnabled = false,
                             UserName = "bob@example.com"
                         },
@@ -525,16 +525,16 @@ namespace Reactivities.Persistance.Migrations
                         {
                             Id = "72CC07A3-65A5-47DD-82A3-06F313FC12A7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "780c0151-52ed-4391-843f-8915d19cc1b7",
+                            ConcurrencyStamp = "89412066-f6b5-4e3b-8c93-a0e66dd5bb2e",
                             DisplayName = "Jane",
                             Email = "jane@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "JANE@EXAMPLE.COM",
                             NormalizedUserName = "JANE@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDkQq81ogPJIyotkBbhXkQPTwyb123SUy8SrhXJOGkkM6chAmYIjNtII3lsE1z4lOQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEO4SLxzPIBtVT04HWuzhlGDp5s7iz1kSMyYYfxoHyq1QZxXcdQsTnWfPEfcST+tmtQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cff89bfc-b5ef-4658-b77e-d96925a10075",
+                            SecurityStamp = "50300cbe-8e80-4b93-8750-71e49ca58a8a",
                             TwoFactorEnabled = false,
                             UserName = "jane@example.com"
                         },
@@ -542,16 +542,16 @@ namespace Reactivities.Persistance.Migrations
                         {
                             Id = "B61171D5-4848-4F3F-B425-EDECCB408C9B",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c873b9bb-07e8-482b-871e-bba54e31a765",
+                            ConcurrencyStamp = "62ad0132-e4af-4303-b95f-81c34b328670",
                             DisplayName = "Tom",
                             Email = "tom@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "TOM@EXAMPLE.COM",
                             NormalizedUserName = "TOM@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPbeO7QU3UdKDUfd8xlkVV6aZuZtzEWkkjJA85VdtHwz+iOpQyKEDSfByIqSXGPPjA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAmnpwmJRn4YmtoTTXCp8HpB8Ma7+AOloisx8SSIq27RG7EKwbDPHHObnenY8t4D8w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9e54d87f-45dc-45e7-8ecb-fa3b4ed54fbf",
+                            SecurityStamp = "4addb173-881e-4bc9-8cf0-3a768dfbf833",
                             TwoFactorEnabled = false,
                             UserName = "tom@example.com"
                         });
@@ -607,6 +607,21 @@ namespace Reactivities.Persistance.Migrations
                     b.HasIndex("AppUserId");
 
                     b.ToTable("Photos");
+                });
+
+            modelBuilder.Entity("Reactivities.Domain.UserFollowing", b =>
+                {
+                    b.Property<string>("ObserverId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("TargetId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ObserverId", "TargetId");
+
+                    b.HasIndex("TargetId");
+
+                    b.ToTable("UserFollowings");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -703,6 +718,25 @@ namespace Reactivities.Persistance.Migrations
                         .HasForeignKey("AppUserId");
                 });
 
+            modelBuilder.Entity("Reactivities.Domain.UserFollowing", b =>
+                {
+                    b.HasOne("Reactivities.Domain.AppUser", "Observer")
+                        .WithMany("Followers")
+                        .HasForeignKey("ObserverId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Reactivities.Domain.AppUser", "Target")
+                        .WithMany("Followings")
+                        .HasForeignKey("TargetId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Observer");
+
+                    b.Navigation("Target");
+                });
+
             modelBuilder.Entity("Reactivities.Domain.Activity", b =>
                 {
                     b.Navigation("Attendees");
@@ -713,6 +747,10 @@ namespace Reactivities.Persistance.Migrations
             modelBuilder.Entity("Reactivities.Domain.AppUser", b =>
                 {
                     b.Navigation("Activities");
+
+                    b.Navigation("Followers");
+
+                    b.Navigation("Followings");
 
                     b.Navigation("Photos");
                 });
