@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Reactivities.Application.Activities;
+using Reactivities.Application.Core;
 using Reactivities.Domain;
 using Reactivities.Persistance;
 
@@ -12,10 +13,10 @@ namespace Reactivities.API.Controllers
     {
 
         [HttpGet]
-        public async Task<IActionResult> GetActivities()
+        public async Task<IActionResult> GetActivities([FromQuery]ActivityParams pagingParams)
         {
-            var result = await mediator.Send(new List.Query());
-            return HandleResult(result);
+            var result = await mediator.Send(new List.Query() { Params = pagingParams });
+            return HandlePagedResult(result);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetActivity(int id)
